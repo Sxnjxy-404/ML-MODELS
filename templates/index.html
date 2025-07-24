@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Interest Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Movie Interest Predictor</h1>
+    <form action="/predict" method="POST">
+     <!-- Age -->
+<label for="age">Age</label>
+<input type="number" id="age" name="age" placeholder="Enter your age" required min="10" max="100">
+
+<!-- Gender Dropdown -->
+<label for="gender"><i class="fas fa-user"></i> Gender</label>
+<select name="gender" id="gender" required>
+  <option value="" disabled selected>Select your gender</option>
+  <option value="Male">👨 Male</option>
+  <option value="Female">👩 Female</option>
+  <option value="Other">🧑 Other</option>
+</select>
+
+<!-- Genre Dropdown -->
+<label for="genre"><i class="fas fa-film"></i> Preferred Genre</label>
+<select name="genre" id="genre" required>
+  <option value="" disabled selected>Select your genre</option>
+  <option value="Action">💥 Action</option>
+  <option value="Comedy">😂 Comedy</option>
+  <option value="Drama">🎭 Drama</option>
+  <option value="Horror">👻 Horror</option>
+  <option value="Romance">❤️ Romance</option>
+  <option value="Sci-Fi">👽 Sci-Fi</option>
+  <option value="Thriller">🔪 Thriller</option>
+</select>
+
+<!-- Frequency -->
+<label for="frequency">🎬 Movies Watched Per Week</label>
+<input type="range" name="frequency" id="frequency" min="0" max="5" value="3" oninput="this.nextElementSibling.value = this.value">
+<output>3</output>
+
+
+
+<!-- Predict Button -->
+<button type="submit" class="predict-btn">Predict 🎯</button>
+
+    </form>
+  </div>
+</body>
+</html>
