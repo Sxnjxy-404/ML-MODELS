@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <style>
+    body {
+      background: url('https://cdn.pixabay.com/photo/2017/01/20/00/30/car-1992161_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      backdrop-filter: brightness(0.4);
+    }
+
+    .result-box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px 50px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 20px #ffe60077;
+    }
+
+    h2 {
+      color: #ffe600;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      color: #000;
+      background-color: #ffe600;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    a:hover {
+      background-color: #ffd000;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h2>🧾 Prediction Result</h2>
+    <p>🚖 Estimated Weekly Taxi Fare: <strong>₹{{ prediction }}</strong></p>
+    <a href="/">🔁 Try Again</a>
+  </div>
+</body>
+</html>

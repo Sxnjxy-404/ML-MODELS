@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📊 Academic Performance Prediction Result</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      background-image: url('https://cdn.pixabay.com/photo/2020/06/24/11/34/blackboard-5334255_960_720.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      backdrop-filter: blur(3px);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .result-box {
+      background: rgba(0, 0, 0, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      width: 500px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #00fff0;
+      margin-bottom: 15px;
+    }
+
+    .prediction {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 20px 0;
+    }
+
+    .strategy {
+      font-size: 1em;
+      margin-top: 15px;
+      color: #dddddd;
+    }
+
+    .back-btn {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #0ff;
+      transition: 0.3s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background-color: #00dddd;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    <h1>🎯 Academic Performance Result</h1>
+    <div class="prediction">Predicted Performance: <strong>{{ prediction }}</strong> 🎓</div>
+
+    {% if prediction == 'Good' %}
+      <div class="strategy">🌟 Great job! Keep up your consistency. Aim for deeper understanding, and help peers when you can. You're on the path to excellence! 💪</div>
+    {% elif prediction == 'Average' %}
+      <div class="strategy">📘 You're doing okay, but there's room to grow. Try increasing your study hours 📈 and attend classes more regularly 🕒. You’ve got potential!</div>
+    {% elif prediction == 'Poor' %}
+      <div class="strategy">🚀 Let’s get back on track! Start by building daily study habits 📅, asking for help when needed, and never miss important lectures. You can improve! 🙌</div>
+    {% else %}
+      <div class="strategy">🔎 Please verify your inputs. Every detail matters in performance prediction!</div>
+    {% endif %}
+
+    <a href="/" class="back-btn">🔄 Try Again</a>
+  </div>
+</body>
+</html>
