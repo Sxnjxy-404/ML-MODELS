@@ -1,0 +1,11 @@
+Day,Weather,TimeOfDay,SleepQuality,Mood,BuyCoffee
+D1,Sunny,Morning,Poor,Tired,Yes
+D2,Rainy,Morning,Good,Fresh,Yes
+D3,Overcast,Afternoon,Poor,Tired,No
+D4,Sunny,Afternoon,Good,Energetic,No
+D5,Rainy,Evening,Poor,Tired,Yes
+D6,Sunny,Morning,Good,Fresh,Yes
+D7,Overcast,Morning,Poor,Tired,No
+D8,Rainy,Afternoon,Good,Tired,Yes
+D9,Sunny,Evening,Good,Energetic,No
+D10,Rainy,Morning,Poor,Tired,Yes
