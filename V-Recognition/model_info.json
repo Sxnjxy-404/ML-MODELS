@@ -1,0 +1,82 @@
+{
+  "model_type": "DecisionTreeClassifier",
+  "accuracy": 0.5555555555555556,
+  "training_date": "2025-07-28T14:36:18.194006",
+  "feature_names": [
+    "Outlook",
+    "Temperature",
+    "Humidity",
+    "Wind"
+  ],
+  "label_mappings": {
+    "Outlook": {
+      "classes": [
+        "Overcast",
+        "Rain",
+        "Sunny"
+      ],
+      "mapping": {
+        "Overcast": 0,
+        "Rain": 1,
+        "Sunny": 2
+      }
+    },
+    "Temperature": {
+      "classes": [
+        "Cool",
+        "Hot",
+        "Mild"
+      ],
+      "mapping": {
+        "Cool": 0,
+        "Hot": 1,
+        "Mild": 2
+      }
+    },
+    "Humidity": {
+      "classes": [
+        "High",
+        "Normal"
+      ],
+      "mapping": {
+        "High": 0,
+        "Normal": 1
+      }
+    },
+    "Wind": {
+      "classes": [
+        "Strong",
+        "Weak"
+      ],
+      "mapping": {
+        "Strong": 0,
+        "Weak": 1
+      }
+    },
+    "PlayTennis": {
+      "classes": [
+        "No",
+        "Yes"
+      ],
+      "mapping": {
+        "No": 0,
+        "Yes": 1
+      }
+    }
+  },
+  "model_parameters": {
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "entropy",
+    "max_depth": 3,
+    "max_features": null,
+    "max_leaf_nodes": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 1,
+    "min_samples_split": 5,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "random_state": 42,
+    "splitter": "best"
+  }
+}

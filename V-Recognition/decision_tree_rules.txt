@@ -1,0 +1,13 @@
+|--- Wind <= 0.50
+|   |--- Outlook <= 0.50
+|   |   |--- class: 1
+|   |--- Outlook >  0.50
+|   |   |--- Humidity <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- Humidity >  0.50
+|   |   |   |--- class: 0
+|--- Wind >  0.50
+|   |--- Outlook <= 1.50
+|   |   |--- class: 1
+|   |--- Outlook >  1.50
+|   |   |--- class: 1

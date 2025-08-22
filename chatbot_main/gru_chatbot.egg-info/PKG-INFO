@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: gru_chatbot
+Version: 1.0.0
+Summary: A GRU-based chatbot with Flask and Streamlit support
+Author: Your Name
+Requires-Python: >=3.8
+Requires-Dist: tensorflow>=2.0
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: flask
+Requires-Dist: streamlit
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

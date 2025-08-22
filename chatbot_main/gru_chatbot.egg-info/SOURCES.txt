@@ -1,0 +1,7 @@
+setup.py
+gru_chatbot.egg-info/PKG-INFO
+gru_chatbot.egg-info/SOURCES.txt
+gru_chatbot.egg-info/dependency_links.txt
+gru_chatbot.egg-info/entry_points.txt
+gru_chatbot.egg-info/requires.txt
+gru_chatbot.egg-info/top_level.txt

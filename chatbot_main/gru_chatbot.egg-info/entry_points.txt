@@ -1,0 +1,4 @@
+[console_scripts]
+chatbot-flask = chatbot_flask:main
+chatbot-train = train_gru_chatbot:main
+chatbot-ui = chatbot_streamlit:main

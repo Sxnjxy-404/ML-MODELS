@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎤 Weather Tennis Predictor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-method {
+            margin: 20px 0;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .text-input-section {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 10px 0;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+        }
+
+        .help-text {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .valid-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .feature-group {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .feature-values {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result-display {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result-success {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #2e7d32;
+        }
+
+        .result-error {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #c62828;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .valid-values {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎤 Weather Tennis Predictor</h1>
+        <p class="subtitle">Predict whether to play tennis based on weather conditions</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('voice')">🎤 Voice Input</button>
+            <button class="tab" onclick="switchTab('text')">⌨️ Text Input</button>
+        </div>
+
+        <!-- Voice Input Tab -->
+        <div id="voice-tab" class="tab-content active">
+            <div class="input-section">
+                <h3>🎙️ Voice Recognition</h3>
+                <p>Click the button and speak the weather conditions clearly</p>
+                <form action="/predict" method="POST" onsubmit="showLoading()">
+                    <button type="submit">🎙️ Start Voice Input</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Text Input Tab -->
+        <div id="text-tab" class="tab-content">
+            <div class="input-section">
+                <h3>⌨️ Text Input</h3>
+                <p>Type the weather conditions separated by spaces</p>
+                <form onsubmit="predictFromText(event)">
+                    <input type="text" 
+                           id="textInput" 
+                           placeholder="e.g., Sunny Hot High Weak"
+                           required>
+                    <br>
+                    <button type="submit">🔮 Predict</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing your input...</p>
+        </div>
+
+        <div class="result-display" id="resultDisplay"></div>
+
+        <div class="help-text">
+            <h4>📝 Instructions:</h4>
+            <p>Provide exactly 4 weather parameters in this order:</p>
+            <p><strong>Outlook → Temperature → Humidity → Wind</strong></p>
+            <p>Example: "Sunny Hot High Weak"</p>
+        </div>
+
+        <div class="valid-values">
+            <div class="feature-group">
+                <div class="feature-title">☀️ Outlook</div>
+                <div class="feature-values">Sunny<br>Overcast<br>Rain</div>
+            </div>
+            <div class="feature-group">
+                <div class="feature-title">🌡️ Temperature</div>
+                <div class="feature-values">Hot<br>Mild<br>Cool</div>
+            </div>
+            <div class="feature-group">
+                <div class="feature-title">💧 Humidity</div>
+                <div class="feature-values">High<br>Normal</div>
+            </div>
+            <div class="feature-group">
+                <div class="feature-title">💨 Wind</div>
+                <div class="feature-values">Weak<br>Strong</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Hide result if switching tabs
+            document.getElementById('resultDisplay').style.display = 'none';
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('resultDisplay').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        async function predictFromText(event) {
+            event.preventDefault();
+            
+            const textInput = document.getElementById('textInput').value;
+            const resultDisplay = document.getElementById('resultDisplay');
+            
+            showLoading();
+            
+            try {
+                const response = await fetch('/predict_text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `text_input=${encodeURIComponent(textInput)}`
+                });
+                
+                const data = await response.json();
+                
+                hideLoading();
+                
+                if (data.error) {
+                    showResult(data.error, 'error');
+                } else {
+                    let resultText = data.prediction;
+                    if (data.confidence) {
+                        resultText += `<br><small>Confidence: ${data.confidence.toFixed(1)}%</small>`;
+                    }
+                    showResult(resultText, 'success');
+                }
+                
+            } catch (error) {
+                hideLoading();
+                showResult('❌ Error connecting to server: ' + error.message, 'error');
+            }
+        }
+
+        function showResult(message, type) {
+            const resultDisplay = document.getElementById('resultDisplay');
+            resultDisplay.innerHTML = message;
+            resultDisplay.className = `result-display result-${type}`;
+            resultDisplay.style.display = 'block';
+        }
+
+        // Auto-focus text input when switching to text tab
+        document.querySelector('.tab').addEventListener('click', function() {
+            if (this.textContent.includes('Text')) {
+                setTimeout(() => {
+                    document.getElementById('textInput').focus();
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
