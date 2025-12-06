@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Invoice</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dark-mode" id="body">
+
+  <!-- 🌗 Theme Toggle -->
+  <div class="mode-switch">
+    <label>🌗 Mode</label>
+    <input type="checkbox" id="theme-toggle" />
+  </div>
+
+  <div class="container">
+    <h1>📄 Upload Invoice</h1>
+    <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="invoice" required>
+      <button type="submit">📤 Process</button>
+    </form>
+
+    <div id="spinner" class="spinner hidden"></div>
+    <div id="toast" class="toast hidden">Uploaded Successfully!</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("upload-form");
+    const spinner = document.getElementById("spinner");
+    const toast = document.getElementById("toast");
+    const toggle = document.getElementById("theme-toggle");
+    const body = document.getElementById("body");
+
+    form.addEventListener("submit", () => {
+      spinner.classList.remove("hidden");
+      setTimeout(() => {
+        spinner.classList.add("hidden");
+        toast.classList.remove("hidden");
+        setTimeout(() => toast.classList.add("hidden"), 2000);
+      }, 2000);
+    });
+
+    // Theme toggle handler
+    toggle.addEventListener("change", () => {
+      body.classList.toggle("light-mode");
+      body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>

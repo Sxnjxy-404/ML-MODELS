@@ -1,0 +1,30 @@
+INVOICE
+
+From:
+Techno Traders Pvt Ltd
+No. 21, Gandhi Street, Chennai, TN - 600001
+GSTIN: 33AABCT3512L1Z3
+
+To:
+Sanjay Kumar
+Plot 45, Park View Avenue
+Coimbatore - 641004
+
+Invoice No: TT-2025-0081
+Invoice Date: 01-Aug-2025
+Due Date: 10-Aug-2025
+
+Description             Qty   Unit Price   Total
+--------------------------------------------------
+HP Laser Printer        2     ₹8,000.00    ₹16,000.00
+Canon Ink Cartridge     5     ₹400.00      ₹2,000.00
+
+--------------------------------------------------
+Subtotal:                            ₹18,000.00
+GST (18%):                           ₹3,240.00
+Total Amount:                        ₹21,240.00
+
+Bank Details:
+A/C Name: Techno Traders Pvt Ltd
+A/C No: 012345678901
+IFSC: ICIC0000123

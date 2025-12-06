@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Result - Invoice</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>✅ Extracted Invoice Details</h1>
+    <div class="result-box">
+      {% for key, value in data.items() %}
+        <p><strong>{{ key }}:</strong> {{ value }}</p>
+      {% endfor %}
+    </div>
+
+    <a class="button-link" href="/download_csv">⬇️ Download CSV</a>
+    <a class="button-link" href="/">🔙 Back</a>
+  </div>
+</body>
+</html>
